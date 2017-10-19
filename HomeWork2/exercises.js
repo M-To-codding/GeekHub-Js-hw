@@ -84,15 +84,28 @@ function isEven(number) {
 
 
 // 6. Beans
+var char,
+    additionInfo = '// 6. Beans:\n a) countBs(\'bbsb sfhd jfhd sbb\'), char = \'b\'';
+
 function countBs(someString) {
-    addNewLines('// 6. Beans');
-    var h = [];
+    addNewLines(additionInfo);
+
+    var result = [];
+    if (char === undefined) {
+        char = 'b';
+    }
     for (i = 0; i < someString.length; i++) {
-        if (someString[i] == 'b') {
-            h += someString[i];
+        if (someString[i] == char) {
+            result += someString[i];
         }
     }
-    return console.log(h.length);
+    return console.log(result.length);
+}
+
+function countChar(someString, char) {
+    this.char = char;
+    additionInfo = ' b) countChar(\'bbsb sfhd jfhd sbb\', \'d\')'
+    countBs(someString);
 }
 
 
@@ -102,3 +115,4 @@ showChessboard();
 min(5, -5);
 isEven(-10);
 countBs('bbsb sfhd jfhd sbb');
+countChar('bbsb sfhd jfhd sbb', 'd');
