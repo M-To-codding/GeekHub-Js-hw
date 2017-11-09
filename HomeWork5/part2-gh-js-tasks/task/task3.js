@@ -45,7 +45,21 @@ var longWordTests = [
 
 
 function longWord(word) {
-    //TODO
+    var result = '',
+        arr = [];
+
+    if (word.length >= 10) {
+
+        for (var i = 0; i < word.length; i++) {
+            arr[i] = word.charAt(i);
+        }
+
+        result += arr[0] + (arr.length - 2) + arr[arr.length - 1];
+
+    } else if (word.length<10){
+        result = word;
+    }
+    return result;
 }
 
 

@@ -38,7 +38,44 @@ var stringDotTests = [
 
 
 function stringDot(word) {
-    //TODO
+    var result = '',
+        letters = [];
+
+    for (var i = 0; i < word.length; i++) {
+        letters[i] = word.charAt(i).toLowerCase();
+
+    }
+
+    for (var key in letters){
+
+        if (letters[key] === 'a'){
+            letters.splice(key, 1);
+        }
+        if (letters[key] === 'e'){
+            letters.splice(key, 1);
+        }
+        if (letters[key] === 'y'){
+            letters.splice(key, 1);
+        }
+        if (letters[key] === 'u'){
+            letters.splice(key, 1);
+        }
+        if (letters[key] === 'i'){
+            letters.splice(key, 1);
+        }
+        if (letters[key] === 'o'){
+            letters.splice(key, 1);
+        }
+        console.log(letters[i]);
+    }
+
+    for (var key in letters) {
+        result += '.' + letters[key];
+    }
+
+
+    return result;
+
 }
 
 

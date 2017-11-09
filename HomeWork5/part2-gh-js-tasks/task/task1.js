@@ -33,7 +33,20 @@ var fibonacciTests = [
 
 
 function fibonacci(n) {
-    //TODO
+    var result = 2, a = 1, b = 1;
+
+    if (n < 2) {
+        result = 0 + n;
+    } else {
+        for (var i = 3; i <= n; i++) {
+            var tmp = a + b;
+            a = b;
+            b = tmp;
+            result += b;
+        }
+    }
+
+    return result;
 }
 
 
