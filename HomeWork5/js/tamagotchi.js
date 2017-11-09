@@ -52,13 +52,23 @@ function Flower() {
         }
     }
 
+    function changeWearinessStatus() {
+        if (that.weariness!== 0){
+            if (that.power < 8 || that.health < 75) {
+                that.weariness -= 2;
+                document.querySelector('.weariness-count').innerHTML = that.weariness;
+            }
+        }
+    }
+
     changeEntityImg(status);
     element.innerHTML = '<div class="container">' +
         '<p class="entity-item name">' + '<h3 class="name"><b>Name:</b> ' + name + '</h3></p>' +
         '<p class="entity-item health">' + '<b>Health:</b> ' + '<span class="health-count"> ' + that.health + '</span></p>' +
-        '<p class="entity-item health">' + '<b>Satiety</b>: ' + '<span class="satiety-count"> ' + that.satiety + '</span></p>' +
-        '<p class="entity-item health">' + '<b>Power:</b> ' + '<span class="power-count"> ' + that.power + '</span></p>' +
-        '<p class="entity-item health">' + '<b>Happiness:</b> ' + '<span class="happiness-count"> ' + that.happiness + '</span></p>'
+        '<p class="entity-item satiety">' + '<b>Satiety</b>: ' + '<span class="satiety-count"> ' + that.satiety + '</span></p>' +
+        '<p class="entity-item power">' + '<b>Power:</b> ' + '<span class="power-count"> ' + that.power + '</span></p>' +
+        '<p class="entity-item happiness">' + '<b>Happiness:</b> ' + '<span class="happiness-count"> ' + that.happiness + '</span></p>' +
+        '<p class="entity-item weariness">' + '<b>Weariness:</b> ' + '<span class="weariness-count"> ' + that.weariness + '</span></p>'
         + '</div>';
 
     document.body.appendChild(element);
@@ -66,9 +76,8 @@ function Flower() {
 
     setInterval(changeHealthStatus, 1500);
     setInterval(changeSatietyStatus, 3000);
-
     setInterval(changePowerStatus, 5000);
-
+    setInterval(changeWearinessStatus, 2000);
 }
 
 var flower = new Flower('Flower');

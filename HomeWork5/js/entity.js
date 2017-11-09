@@ -5,6 +5,6 @@ function Entity(name) {
     that.satiety = 50;
     that.power = 10;
     that.happiness = 50;
-    that.fatigue = 50;
+    that.weariness = 50;
     that.status = 'good';
 }
