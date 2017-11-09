@@ -72,11 +72,11 @@ function Flower() {
     changeEntityImg(status);
     element.innerHTML = '<div class="container">' +
         '<p class="entity-item name">' + '<h3 class="name"><b>Name:</b> ' + name + '</h3></p>' +
-        '<p class="entity-item health">' + '<b>Health:</b> ' + '<span class="health-count"> ' + that.health + '</span></p>' +
-        '<p class="entity-item satiety">' + '<b>Satiety</b>: ' + '<span class="satiety-count"> ' + that.satiety + '</span></p>' +
-        '<p class="entity-item power">' + '<b>Power:</b> ' + '<span class="power-count"> ' + that.power + '</span></p>' +
-        '<p class="entity-item happiness">' + '<b>Happiness:</b> ' + '<span class="happiness-count"> ' + that.happiness + '</span></p>' +
-        '<p class="entity-item weariness">' + '<b>Weariness:</b> ' + '<span class="weariness-count"> ' + that.weariness + '</span></p>'
+        '<p class="entity-item health">' + '<i class="fa fa-heartbeat" aria-hidden="true"></i><b>Health:</b> ' + '<span class="health-count"> ' + that.health + '</span></p>' +
+        '<p class="entity-item satiety">' + '<i class="fa fa-cutlery" aria-hidden="true"></i><b>Satiety</b>: ' + '<span class="satiety-count"> ' + that.satiety + '</span></p>' +
+        '<p class="entity-item power">' + '<i class="fa fa-battery-three-quarters" aria-hidden="true"></i><b>Power:</b> ' + '<span class="power-count"> ' + that.power + '</span></p>' +
+        '<p class="entity-item happiness">' + '<i class="fa fa-child" aria-hidden="true"></i><b>Happiness:</b> ' + '<span class="happiness-count"> ' + that.happiness + '</span></p>' +
+        '<p class="entity-item weariness">' + '<i class="fa fa-moon-o" aria-hidden="true"></i><b>Weariness:</b> ' + '<span class="weariness-count"> ' + that.weariness + '</span></p>'
         + '</div>';
 
     document.body.appendChild(element);

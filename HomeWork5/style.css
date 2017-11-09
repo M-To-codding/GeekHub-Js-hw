@@ -1,7 +1,7 @@
 .container {
     display: flex;
     flex-direction: column;
-    width: 116px;
+    width: 126px;
 }
 
 .entity {
@@ -12,7 +12,7 @@
     margin: auto;
     border: 2px dotted black;
     justify-content: space-around;
-    background-color: #b6ccdf;
+    background-color: #c2ff73;
 }
 
 .flower {
@@ -33,4 +33,46 @@
 
 .name {
     margin-bottom: 0;
+}
+
+.button {
+    padding: 10px 18px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    font-size: 19px;
+    cursor: pointer;
+}
+.button:active {
+    border-color: yellow;
+    border-width: 3px;
+}
+
+.feed-button {
+    background-color: #15ebe2;
+}
+.treat-button {
+    background-color: #ff2100;
+}
+.play-button {
+    background-color: #06ff00;
+}
+.sleep-button {
+    background-color: #f6cf0b;
+}
+
+.message-container {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    margin: auto;
+    color: red;
+}
+
+.fa {
+    width: 25px;
+    color: #686868;
+}
+
+button>.fa {
+    color: #fff;
 }
