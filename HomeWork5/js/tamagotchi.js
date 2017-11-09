@@ -23,40 +23,48 @@ function Flower() {
     }
 
     function changeHappinessStatus(health) {
-        if (health < 60) {
-            if (that.happiness === 0) {
-                return document.querySelector('.happiness-count').innerHTML = 0;
-            } else {
-                that.happiness -= 2;
-                document.querySelector('.happiness-count').innerHTML = that.happiness;
+        if (health !== 0) {
+            if (health < 60) {
+                if (that.happiness === 0) {
+                    return document.querySelector('.happiness-count').innerHTML = 0;
+                } else {
+                    that.happiness -= 2;
+                    document.querySelector('.happiness-count').innerHTML = that.happiness;
+                }
             }
         }
     }
 
     function changeSatietyStatus() {
 
-        if (that.satiety !== 0) {
-            that.satiety -= 5;
-            document.querySelector('.satiety-count').innerHTML = that.satiety;
+        if (that.health !== 0) {
+            if (that.satiety !== 0) {
+                that.satiety -= 5;
+                document.querySelector('.satiety-count').innerHTML = that.satiety;
+            }
         }
     }
 
     function changePowerStatus(health) {
-        if (that.health < 80) {
-            if (that.power === 0) {
-                document.querySelector('.power-count').innerHTML = 0;
-            } else {
-                that.power--;
-                document.querySelector('.power-count').innerHTML = that.power;
+        if (that.health !== 0) {
+            if (that.health < 80) {
+                if (that.power === 0) {
+                    document.querySelector('.power-count').innerHTML = 0;
+                } else {
+                    that.power--;
+                    document.querySelector('.power-count').innerHTML = that.power;
+                }
             }
         }
     }
 
     function changeWearinessStatus() {
-        if (that.weariness!== 0){
-            if (that.power < 8 || that.health < 75) {
-                that.weariness -= 2;
-                document.querySelector('.weariness-count').innerHTML = that.weariness;
+        if (that.health !== 0) {
+            if (that.weariness !== 0) {
+                if (that.power < 8 || that.health < 75) {
+                    that.weariness -= 2;
+                    document.querySelector('.weariness-count').innerHTML = that.weariness;
+                }
             }
         }
     }
