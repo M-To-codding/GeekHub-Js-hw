@@ -16,7 +16,7 @@
 }
 
 .flower {
-    background-image: url("imgs/flower-status-good.png");
+    background-image: url("part1-tamagotchi/imgs/flower-status-good.png");
     width: 300px;
     height: 300px;
     background-repeat: no-repeat;
@@ -25,10 +25,10 @@
     cursor: pointer;
 }
 .flower-bad {
-    background-image: url("imgs/flower-status-bad.png");
+    background-image: url("part1-tamagotchi/imgs/flower-status-bad.png");
 }
 .flower-dead {
-    background-image: url("imgs/flower-status-dead.png");
+    background-image: url("part1-tamagotchi/imgs/flower-status-dead.png");
 }
 
 .name {
