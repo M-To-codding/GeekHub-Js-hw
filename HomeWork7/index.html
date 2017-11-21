@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home work 7</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<main id="container">
+
+    <h1 id="list-title">ToDo List 2.0</h1>
+    <ul id="tasks-container" class="tasks-container">
+        <li class="empty-container">
+            Add your tasks
+        </li>
+    </ul>
+    <input type="text" id="task-input" onkeypress="createTask(event)">
+    <div class="buttons">
+        <button id="add-button" onclick="createTask(13)" type="submit">Add task</button>
+        <button id="reverse-button" onclick="reverseTasks()" type="submit">Reverse tasks</button>
+        <button id="show-active-tasks-button" onclick="showActiveTasks()" type="submit">Show active tasks</button>
+        <button id="show-finished-tasks-button" onclick="showFinishedTasks()" type="submit">Show finished tasks</button>
+        <button id="show-all-tasks-button" onclick="showAllTasks()" type="submit">Show all tasks</button>
+    </div>
+
+</main>
+
+<script src="toDoList.js"></script>
+
+</body>
+</html>
