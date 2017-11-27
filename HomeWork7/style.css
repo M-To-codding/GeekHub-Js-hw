@@ -69,7 +69,7 @@ button {
     border: 1px solid #badafc;
     margin: 10px 0;
     flex-wrap: wrap;
-    cursor: pointer;
+    cursor: move;
 }
 
 .task-text {

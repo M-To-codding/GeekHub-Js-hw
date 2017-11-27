@@ -47,6 +47,8 @@ function getAllTasks() {
         task = document.createElement('li');
         task.id = allSavedItems[i].idOfTask;
         task.classList.add('task');
+        task.setAttribute('draggable-item', '');
+        task.setAttribute('draggable', 'true');
         task.classList.add(allSavedItems[i].active);
         task.innerHTML = '<span class="task-text">' + allSavedItems[i].text + '</span>';
 
@@ -117,4 +119,10 @@ function addTaskDate() {
 
     taskObj.taskDate(dateContainer);
 
+}
+
+if (document.querySelector('.empty-container')) {
+    if (tasksArr) {
+        document.querySelector('.empty-container').remove();
+    }
 }
