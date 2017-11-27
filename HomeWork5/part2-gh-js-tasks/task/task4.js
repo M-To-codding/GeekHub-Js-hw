@@ -43,39 +43,20 @@ function stringDot(word) {
 
     for (var i = 0; i < word.length; i++) {
         letters[i] = word.charAt(i).toLowerCase();
-
     }
 
-    for (var key in letters){
+    for (var i = 0; i < letters.length; i++) {
+        if (letters[i] === 'u' || letters[i] === 'o' || letters[i] === 'e' || letters[i] === 'y' ||
+            letters[i] === 'i' || letters[i] === 'a')
 
-        if (letters[key] === 'a'){
-            letters.splice(key, 1);
-        }
-        if (letters[key] === 'e'){
-            letters.splice(key, 1);
-        }
-        if (letters[key] === 'y'){
-            letters.splice(key, 1);
-        }
-        if (letters[key] === 'u'){
-            letters.splice(key, 1);
-        }
-        if (letters[key] === 'i'){
-            letters.splice(key, 1);
-        }
-        if (letters[key] === 'o'){
-            letters.splice(key, 1);
-        }
-        console.log(letters[i]);
+            delete letters[i];
     }
 
     for (var key in letters) {
         result += '.' + letters[key];
     }
 
-
     return result;
-
 }
 
 

@@ -46,6 +46,7 @@ var luckyNumberTests = [
         expectedResult: false
     }
 ];
+
 /**
  Примечание
  В первом примере количество счастливых цифр числа равно 3 (первая и последние две цифры), поэтому ответ false.
@@ -54,8 +55,52 @@ var luckyNumberTests = [
  */
 
 
+function calcLength(numLength, num) {
+    var result,
+        numLengthStr = '' + numLength,
+        lengthArr = [];
+
+    for (var i = 0; i < numLengthStr.length; i++) {
+        lengthArr[i] = numLengthStr.charAt(i);
+    }
+
+    for (var key in lengthArr){
+        console.log(lengthArr[key]);
+        if (lengthArr[key] == num){
+            result = true;
+        } else {
+            return false;
+        }
+    }
+    return result;
+}
+
 function luckyNumber(number) {
-    //TODO
+    var numLengthStr = '' + number.length,
+        num = [],
+        result = false;
+
+    for (var i = 0; i < number.length; i++) {
+        num[i] = number[i];
+    }
+
+    if (numLengthStr.indexOf('7') !== -1 && numLengthStr.indexOf('4') !== -1 || number.length === 4
+        || number.length === 7 || calcLength(number.length,'4') === true || calcLength(number.length,'7') === true) {
+        for (var i = 0; i < num.length; i++) {
+            if (num[i] == 7) {
+                result = true;
+            } else if (num[i] == 4) {
+                result = true;
+            } else {
+                result = false;
+            }
+        }
+    } else {
+        result = false;
+    }
+
+    return result;
+
 }
 
 

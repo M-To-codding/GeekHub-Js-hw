@@ -34,7 +34,15 @@ var prettyYearTests = [
 
 
 function prettyYear(y) {
-    //TODO
+    var year =  parseInt(y)+1 + '';
+
+    for (var i = parseInt(year); i <= 9000; i++) {
+        year = i.toString();
+        if (year[0] !== year[1] && year[1] !== year[2] && year[2] !== year[3] &&
+            year[3] !== year[0] && year[3] !== year[1]&&year[0]!==year[2]) {
+           return i;
+        }
+    }
 }
 
 
