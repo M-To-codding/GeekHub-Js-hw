@@ -1,0 +1,47 @@
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    max-width: 560px;
+    padding: 10px 20px;
+    margin-left: 200px;
+    height: auto;
+    border-radius: 60%;
+    background: rgb(221, 255, 253);
+}
+
+.btn-container {
+}
+
+.btn {
+    background: #58d6ff;
+    padding: 10px 33px;
+    color: #eafffd;
+    font: 700 19px/24px 'Open sans';
+    border: 1px solid #58d6ff;
+    border-radius: 80px;
+    transition: 2s;
+    cursor: pointer;
+}
+.btn:hover {
+    background: rgba(88, 214, 255, 0.3);
+    color: #fff;
+    transition: 1s;
+}
+
+.play-area {
+    display: inline-flex;
+    flex-wrap: wrap;
+    width: 210px;
+    height: 210px;
+    justify-content: space-around;
+    margin-left: auto;
+}
+
+.grid-item {
+    background-color: #0b97c4;
+    width: 100px;
+    height: 100px;
+    opacity: 0.3;
+}
