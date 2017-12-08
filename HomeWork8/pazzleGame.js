@@ -1,6 +1,7 @@
 function pazzleGame(cols, rows) {
     let elemCount = cols * rows,
-        arrOfItems = [];
+        arrOfItems = [],
+        pazzleItemObj = {};
 
     if (document.querySelectorAll('.grid-item').length == elemCount) {
         return;
@@ -21,9 +22,9 @@ function pazzleGame(cols, rows) {
         $.each(arr, function (index, value) {
             $(value).css('display', 'none');
             $(value).appendTo('.play-area');
-            $('.grid-item').fadeOut('400');
-            $('.grid-item').fadeIn('100');
         });
+        $('.grid-item').fadeOut('100');
+        $('.grid-item').fadeIn('1000');
     }
 
     function createPazzleItems() {
@@ -50,18 +51,17 @@ function pazzleGame(cols, rows) {
             $(arr[i]).css('display', 'none');
             $(arr[i]).appendTo($('#grid-item' + (i + 1)));
             $('#pazzle-item' + (i + 1)).html(numArr[i]);
-            $('.pazzle-item').fadeOut('400');
-            $('.pazzle-item').fadeIn('100');
-        }
 
-        console.log(numArr);
+            $('.pazzle-item').fadeOut();
+        }
+        $('.pazzle-item').fadeIn();
+
 
     }
 
     function generateSomeNumbers() {
 
         let arrOfNums = [];
-        // tmp = Math.floor(Math.random() * elemCount + 1);
 
         for (let i = 0; i < elemCount; i++) {
             arrOfNums[i] = i + 1;
@@ -76,7 +76,7 @@ function pazzleGame(cols, rows) {
 
         while (0 !== currentIndex) {
 
-            randomIndex = Math.floor(Math.random() * currentIndex);
+            randomIndex = Math.floor(Math.random() * (currentIndex-1) );
             currentIndex -= 1;
 
             tmp = array[currentIndex];
@@ -87,6 +87,112 @@ function pazzleGame(cols, rows) {
         return array;
     }
 
+    function getItemPosition() {
+        var allItems = $('.grid-item');
+
+        for (let i = 0; i < allItems.length; i++) {
+            if (!allItems[i].firstChild) {
+                allItems[i].setAttribute('empty-cell', 'true');
+                pazzleItemObj.emptyCellPosX = allItems[i].offsetLeft;
+                pazzleItemObj.emptyCellPosY = allItems[i].offsetTop;
+            }
+        }
+
+        // keyHandler();
+        return pazzleItemObj;
+    }
+
+    function keyHandler() {
+        let up = 38,
+            left = 37,
+            down = 40,
+            right = 39,
+            itemsArr = $('.grid-item'),
+            emptyCell = $('[empty-cell=true]');
+
+        $(window).keydown(function (e) {
+            if (e.which == left) {
+
+                for (let i = 0; i < itemsArr.length; i++) {
+                    if ((itemsArr[i].offsetLeft - itemsArr[i].offsetWidth) == pazzleItemObj.emptyCellPosX&&
+                        (itemsArr[i].offsetTop + itemsArr[i].offsetHeight) == pazzleItemObj.emptyCellPosY + itemsArr[i].offsetHeight) {
+
+                        emptyCell = $('[empty-cell=true]');
+                        $(itemsArr[i].firstChild).appendTo(emptyCell);
+                        emptyCell.removeAttr('empty-cell');
+                        getItemPosition();
+                        emptyCell = $('[empty-cell=true]');
+                        console.log( getItemPosition());
+                        return;
+                    }
+                }
+
+            }
+            if (e.which == up) {
+
+                for (let i = 0; i < itemsArr.length; i++) {
+                    if ((itemsArr[i].offsetLeft + itemsArr[i].offsetWidth) == pazzleItemObj.emptyCellPosX + itemsArr[i].offsetWidth&&
+                        (itemsArr[i].offsetTop - itemsArr[i].offsetHeight) == pazzleItemObj.emptyCellPosY ) {
+
+                        emptyCell = $('[empty-cell=true]');
+                        $(itemsArr[i].firstChild).appendTo(emptyCell);
+                        emptyCell.removeAttr('empty-cell');
+                        getItemPosition();
+                        emptyCell = $('[empty-cell=true]');
+                        console.log( getItemPosition());
+                        return;
+                    }
+                }
+
+            }
+            if (e.which == right) {
+
+                for (let i = 0; i < itemsArr.length; i++) {
+                    if ((itemsArr[i].offsetLeft + itemsArr[i].offsetWidth) == pazzleItemObj.emptyCellPosX&&
+                        (itemsArr[i].offsetTop + itemsArr[i].offsetHeight) == pazzleItemObj.emptyCellPosY + itemsArr[i].offsetHeight) {
+
+                        emptyCell = $('[empty-cell=true]');
+                        $(itemsArr[i].firstChild).appendTo(emptyCell);
+                        emptyCell.removeAttr('empty-cell');
+                        getItemPosition();
+                        emptyCell = $('[empty-cell=true]');
+                        console.log( getItemPosition());
+                        return;
+                    }
+                }
+                // console.log(emptyCell);
+            }
+            if (e.which == down) {
+
+                for (let i = 0; i < itemsArr.length; i++) {
+                    if ((itemsArr[i].offsetLeft + itemsArr[i].offsetWidth) == pazzleItemObj.emptyCellPosX + itemsArr[i].offsetWidth&&
+                        (itemsArr[i].offsetTop + itemsArr[i].offsetHeight) == pazzleItemObj.emptyCellPosY) {
+
+                        emptyCell = $('[empty-cell=true]');
+                        $(itemsArr[i].firstChild).appendTo(emptyCell);
+                        emptyCell.removeAttr('empty-cell');
+                        getItemPosition();
+                        emptyCell = $('[empty-cell=true]');
+                        console.log( getItemPosition());
+                        return;
+                    }
+                }
+
+            }
+        })
+    }
+
+
     createGrid(cols, rows);
-    setTimeout(createPazzleItems, 1000);
+    setTimeout(createPazzleItems, 500);
+    setTimeout(getItemPosition, 500);
+    setTimeout(keyHandler, 100);
+    console.log(pazzleItemObj.emptyCellPosX);
+
+
+}
+
+function restartGame() {
+    $('.grid-item').remove();
+    pazzleGame(3, 3);
 }
