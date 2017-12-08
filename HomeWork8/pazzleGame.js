@@ -72,11 +72,12 @@ function pazzleGame(cols, rows) {
     }
 
     function shuffle(array) {
-        var currentIndex = array.length, tmp, randomIndex;
+        var currentIndex = array.length-1, tmp, randomIndex;
 
+        console.log(currentIndex);
         while (0 !== currentIndex) {
 
-            randomIndex = Math.floor(Math.random() * (currentIndex-1) );
+            randomIndex = Math.floor(Math.random() * currentIndex );
             currentIndex -= 1;
 
             tmp = array[currentIndex];
@@ -114,7 +115,7 @@ function pazzleGame(cols, rows) {
             if (e.which == left) {
 
                 for (let i = 0; i < itemsArr.length; i++) {
-                    if ((itemsArr[i].offsetLeft - itemsArr[i].offsetWidth) == pazzleItemObj.emptyCellPosX&&
+                    if ((itemsArr[i].offsetLeft - itemsArr[i].offsetWidth) == pazzleItemObj.emptyCellPosX &&
                         (itemsArr[i].offsetTop + itemsArr[i].offsetHeight) == pazzleItemObj.emptyCellPosY + itemsArr[i].offsetHeight) {
 
                         emptyCell = $('[empty-cell=true]');
@@ -122,7 +123,7 @@ function pazzleGame(cols, rows) {
                         emptyCell.removeAttr('empty-cell');
                         getItemPosition();
                         emptyCell = $('[empty-cell=true]');
-                        console.log( getItemPosition());
+                        console.log(getItemPosition());
                         return;
                     }
                 }
@@ -131,15 +132,15 @@ function pazzleGame(cols, rows) {
             if (e.which == up) {
 
                 for (let i = 0; i < itemsArr.length; i++) {
-                    if ((itemsArr[i].offsetLeft + itemsArr[i].offsetWidth) == pazzleItemObj.emptyCellPosX + itemsArr[i].offsetWidth&&
-                        (itemsArr[i].offsetTop - itemsArr[i].offsetHeight) == pazzleItemObj.emptyCellPosY ) {
+                    if ((itemsArr[i].offsetLeft + itemsArr[i].offsetWidth) == pazzleItemObj.emptyCellPosX + itemsArr[i].offsetWidth &&
+                        (itemsArr[i].offsetTop - itemsArr[i].offsetHeight) == pazzleItemObj.emptyCellPosY) {
 
                         emptyCell = $('[empty-cell=true]');
                         $(itemsArr[i].firstChild).appendTo(emptyCell);
                         emptyCell.removeAttr('empty-cell');
                         getItemPosition();
                         emptyCell = $('[empty-cell=true]');
-                        console.log( getItemPosition());
+                        console.log(getItemPosition());
                         return;
                     }
                 }
@@ -148,7 +149,7 @@ function pazzleGame(cols, rows) {
             if (e.which == right) {
 
                 for (let i = 0; i < itemsArr.length; i++) {
-                    if ((itemsArr[i].offsetLeft + itemsArr[i].offsetWidth) == pazzleItemObj.emptyCellPosX&&
+                    if ((itemsArr[i].offsetLeft + itemsArr[i].offsetWidth) == pazzleItemObj.emptyCellPosX &&
                         (itemsArr[i].offsetTop + itemsArr[i].offsetHeight) == pazzleItemObj.emptyCellPosY + itemsArr[i].offsetHeight) {
 
                         emptyCell = $('[empty-cell=true]');
@@ -156,7 +157,7 @@ function pazzleGame(cols, rows) {
                         emptyCell.removeAttr('empty-cell');
                         getItemPosition();
                         emptyCell = $('[empty-cell=true]');
-                        console.log( getItemPosition());
+                        console.log(getItemPosition());
                         return;
                     }
                 }
@@ -165,7 +166,7 @@ function pazzleGame(cols, rows) {
             if (e.which == down) {
 
                 for (let i = 0; i < itemsArr.length; i++) {
-                    if ((itemsArr[i].offsetLeft + itemsArr[i].offsetWidth) == pazzleItemObj.emptyCellPosX + itemsArr[i].offsetWidth&&
+                    if ((itemsArr[i].offsetLeft + itemsArr[i].offsetWidth) == pazzleItemObj.emptyCellPosX + itemsArr[i].offsetWidth &&
                         (itemsArr[i].offsetTop + itemsArr[i].offsetHeight) == pazzleItemObj.emptyCellPosY) {
 
                         emptyCell = $('[empty-cell=true]');
@@ -173,22 +174,37 @@ function pazzleGame(cols, rows) {
                         emptyCell.removeAttr('empty-cell');
                         getItemPosition();
                         emptyCell = $('[empty-cell=true]');
-                        console.log( getItemPosition());
+                        console.log(getItemPosition());
                         return;
                     }
                 }
 
             }
+
+            checkWin();
         })
     }
 
+    function checkWin() {
+        var arrOfItems = $('.grid-item'),
+            checkNumbers = [],
+            itemsNum = arrOfItems.text;
+            message = $('<div class="message-for-winner">You win!!!</div>');
+
+        for (var i = 0; i < arrOfItems.length; i++) {
+
+            checkNumbers[i] = '' + (i+1);
+        }
+
+        if (checkNumbers == itemsNum){
+            (message).appendTo($('.play-area'));
+        }
+    }
 
     createGrid(cols, rows);
     setTimeout(createPazzleItems, 500);
     setTimeout(getItemPosition, 500);
     setTimeout(keyHandler, 100);
-    console.log(pazzleItemObj.emptyCellPosX);
-
 
 }
 
