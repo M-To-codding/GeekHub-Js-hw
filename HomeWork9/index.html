@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Home work 9</title>
+</head>
+<body>
+
+<nav class="nav-menu" id="nav-menu">
+    <ul>
+        <li onclick="showMap()">
+            Map
+        </li>
+        <li onclick="showWeather()">
+            Weather
+        </li>
+        <li onclick="showName()">
+            Project name generator
+        </li>
+    </ul>
+
+</nav>
+
+<main>
+    <div class="container" id="map-info">
+        <div class="search-input">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Magnifying_glass_Icon.png" alt=""
+                 onclick="handleRequest()">
+            <input type="text" placeholder="Address" id="map-input">
+        </div>
+    </div>
+
+    <div class="container" id="coords-container">
+    </div>
+
+    <div class="container" id="map-container">
+    </div>
+</main>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHqDBWDgOfS_nnietVtzDEVZ-41uGjXPo"
+        type="text/javascript" async defer></script>
+<script src="addressHandler.js"></script>
+<script src="randomName.js"></script>
+<script src="weatherApi.js"></script>
+
+<script>
+    function showMap() {
+        if (document.getElementById('map-info')) {
+            return;
+        } else {
+            $('main').html('');
+            $('<div class="container" id="map-info">\n' +
+                '    <div class="search-input">\n' +
+                '        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Magnifying_glass_Icon.png" alt=""\n' +
+                '             onclick="handleRequest()">\n' +
+                '        <input type="text" placeholder="Address" id="map-input">\n' +
+                '    </div>\n' +
+                '</div>\n' +
+                '\n' +
+                '<div class="container" id="coords-container">\n' +
+                '</div>\n' +
+                '\n' +
+                '<div class="container" id="map-container">\n' +
+                '</div>').appendTo('main');
+        }
+    }
+
+    function showWeather() {
+        if (document.getElementById('weather-info')) {
+            return;
+        } else {
+            $('main').html('');
+            $('<div class="container" id="weather-info">\n' +
+                '    <div class="search-input">\n' +
+                '        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Magnifying_glass_Icon.png" alt=""\n' +
+                '             onclick="getWeather()">\n' +
+                '        <input type="text" placeholder="Country/city" id="weather-input">\n' +
+                '    </div>\n' +
+                '</div>\n' +
+                '\n' +
+                '<div class="container" id="weather-info-container">\n' +
+                '</div></div>').appendTo('main');
+        }
+    }
+
+    function showName() {
+        if (document.getElementById('name-info')) {
+            return;
+        } else {
+            $('main').html('');
+            $('<div class="container" id="name-info">\n' +
+                '    <div class="search-input">\n' +
+                '        <img src="https://i.pinimg.com/736x/07/7f/30/077f30e6eb6df8203f31a169a9aaf965--cute-unicorn-unicorn-party.jpg" alt=""\n' +
+                '             onclick="generateName()" class="btn">\n' +
+                '    </div>\n' +
+                '</div>\n' +
+                '\n' +
+                '<div class="container" id="name-container">\n' +
+                '</div>').appendTo('main');
+        }
+    }
+
+</script>
+
+</body>
+</html>

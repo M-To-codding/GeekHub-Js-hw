@@ -1,0 +1,107 @@
+li {
+    list-style: none;
+    margin: 0 2px;
+    cursor: pointer;
+    padding: 12px 20px;
+    border-left: 1px solid #e8e7e7;
+    border-right: 1px solid #e8e7e7;
+    box-shadow: 0 0 4px #c7c7c7;
+    transition: 1s;
+}
+li:hover {
+    color: #6691bd;
+    box-shadow: 2px 1px 5px #a7a7a7;
+    transition: 1s;
+}
+li:active {
+    text-shadow: 2px 1px 5px #b5cecc;
+    color: #64819a;
+    background-color: #eaeaea;
+    box-shadow: 0px 0px 1px 1px #a7a7a7;
+    transition: 1s;
+}
+
+.container {
+    max-width: 400px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: space-around;
+}
+
+input {
+    display: flex;
+    padding: 10px 55px 10px 20px;
+    width: 83%;
+    border-radius: 7px;
+    color: #71b470;
+    font-size: 18px;
+    font-weight: 100;
+    transition: 1s;
+}
+
+input::placeholder {
+    color: #c3c2bd;
+    transition: 1s;
+}
+
+input:focus {
+    border-radius: 7px;
+    border-color: rgba(113, 182, 4, 0.34);
+    outline: none;
+    transition: 1s;
+}
+
+.search-input {
+    width: 90%;
+    margin: 140px auto 20px auto;
+    transition: 1s;
+}
+
+img {
+    position: absolute;
+    height: 35px;
+    width: 35px;
+    right: 10px;
+    border-left: 1px dotted #d5d5d5;
+    cursor: pointer;
+    transition: 1s;
+}
+
+#map {
+    height: 220px;
+    width: 500px;
+    display: flex;
+    transition: 1s;
+}
+
+.nav-menu ul {
+    display: flex;
+}
+
+.btn {
+    width: 105px;
+    height: 110px;
+    border: 1px solid #fff;
+    box-shadow: 0 0 13px #afafaf;
+    padding: 0 66px;
+    position: relative;
+}
+.btn:hover {
+    box-shadow: 2px 1px 5px 3px #a7a7a7;
+    transition: 1s;
+}
+.btn:active {
+    background: #dedede;
+    border: 1px solid #c7c7c7;
+    border-radius: 20px;
+    transition: none;
+}
+
+#name-container, #weather-info-container {
+    flex-direction: column;
+}
+#name-info .search-input {
+    width: 55%;
+}
