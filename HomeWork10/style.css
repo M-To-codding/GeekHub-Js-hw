@@ -3,11 +3,10 @@
     justify-content: center;
     align-items: center;
     justify-items: center;
-    max-width: 560px;
+    max-width: 910px;
     padding: 10px 20px;
     margin-left: 200px;
     height: auto;
-    border-radius: 60%;
     background: rgb(230, 244, 249);
 }
 
@@ -80,4 +79,21 @@
     background-color: rgba(6, 77, 93, 0.31);
     color: white;
 
+}
+
+.inputs-container {
+    display: flex;
+    position: absolute;
+    z-index: 1;
+    top: 15%;
+    left: 18%;
+    width: 130px;
+    justify-content: space-between;
+}
+
+.cells {
+    width: 65px;
+    border-radius: 10px;
+    padding: 0 2px;
+    box-sizing: border-box;
 }

@@ -1,20 +1,33 @@
-function pazzleGame(cols, rows) {
-    let elemCount = cols * rows,
+$(function () {
+
+    for (let i = 3; i <= 10; i++) {
+        $('.cells').append($(`<option value="${i}">${i}x${i}</option>`));
+    }
+
+})
+
+function pazzleGame(cells) {
+
+    cells = $('.cells option:selected').val() || 3;
+
+
+    let elemCount = cells*cells,
         arrOfItems = [],
         pazzleItemObj = {};
 
-    if (document.querySelectorAll('.grid-item').length == elemCount) {
+    console.log(cells);
+
+    if (document.querySelector('.grid-item')) {
         return;
     }
 
     function createGrid() {
 
         for (let i = 0; i < elemCount; i++) {
-            arrOfItems[i] = '<div id="grid-item' + (i + 1) + '" class="grid-item"></div>';
+            arrOfItems[i] = `<div id="grid-item${i + 1}" class="grid-item"></div>`;
         }
 
         appendGridItems(arrOfItems);
-
     }
 
     function appendGridItems(arr) {
@@ -33,7 +46,7 @@ function pazzleGame(cols, rows) {
         if ($('.grid-item')) {
 
             for (let i = 0; i < elemCount; i++) {
-                arrOfItems[i] = '<div id="pazzle-item' + (i + 1) + '" class="pazzle-item"></div>';
+                arrOfItems[i] = `<div id="pazzle-item${i + 1}" class="pazzle-item"></div>`;
             }
 
         }
@@ -201,7 +214,7 @@ function pazzleGame(cols, rows) {
         }
     }
 
-    createGrid(cols, rows);
+    createGrid(cells);
     setTimeout(createPazzleItems, 500);
     setTimeout(getItemPosition, 500);
     setTimeout(keyHandler, 100);
