@@ -2,10 +2,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction:  column;
     justify-items: center;
-    max-width: 910px;
+    /*max-width: 910px;*/
     padding: 10px 20px;
-    margin-left: 200px;
+    /*margin-left: 200px;*/
     height: auto;
     background: rgb(230, 244, 249);
 }
@@ -44,9 +45,10 @@
     display: inline-flex;
     flex-wrap: wrap;
     width: 355px;
-    height: 324px;
-    /*justify-content: space-around;*/
-    margin-left: auto;
+    min-height: 324px;
+    height: auto;
+    /*margin-left: auto;*/
+    margin: auto;
     position: relative;
 }
 
@@ -83,10 +85,7 @@
 
 .inputs-container {
     display: flex;
-    position: absolute;
     z-index: 1;
-    top: 15%;
-    left: 18%;
     width: 130px;
     justify-content: space-between;
 }
@@ -96,4 +95,5 @@
     border-radius: 10px;
     padding: 0 2px;
     box-sizing: border-box;
+    margin:  auto;
 }

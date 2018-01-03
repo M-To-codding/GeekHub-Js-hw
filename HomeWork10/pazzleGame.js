@@ -7,9 +7,20 @@ $(function () {
 })
 
 function pazzleGame(cells) {
+        cells = $('.cells option:selected').val() || 3;
 
-    cells = $('.cells option:selected').val() || 3;
 
+    function changeWidthOfArea() {
+        let areaSize = 355;
+
+        if (cells > 3) {
+            for (let i = 3; i<cells; i++) {
+                areaSize += 110;
+            }
+        }
+
+        $('.play-area').css('width', areaSize + 'px');
+    }
 
     let elemCount = cells*cells,
         arrOfItems = [],
@@ -215,6 +226,7 @@ function pazzleGame(cells) {
     }
 
     createGrid(cells);
+    changeWidthOfArea();
     setTimeout(createPazzleItems, 500);
     setTimeout(getItemPosition, 500);
     setTimeout(keyHandler, 100);
