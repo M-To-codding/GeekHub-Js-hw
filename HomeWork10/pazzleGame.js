@@ -225,6 +225,7 @@ function pazzleGame(cells) {
         }
     }
 
+    getPlayerData();
     createGrid(cells);
     changeWidthOfArea();
     setTimeout(createPazzleItems, 500);
