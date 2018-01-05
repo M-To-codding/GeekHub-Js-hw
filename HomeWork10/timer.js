@@ -3,8 +3,8 @@ function timer(cell) {
 
     this.startTimer = setInterval(function () {
             time++;
-            console.clear();
-            console.log(time);
+            // console.clear();
+            // console.log(time);
             $(cell).text(time + 's');
         }, 1000);
 

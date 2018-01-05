@@ -1,3 +1,10 @@
+window.addEventListener("keydown", function (e) {
+    // space and arrow keys
+    if ([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+        e.preventDefault();
+    }
+}, false);
+
 $(function () {
 
     for (let i = 3; i <= 10; i++) {
@@ -8,15 +15,27 @@ $(function () {
 
 
 let counter = {};
+
 function pazzleGame(cells) {
-        cells = $('.cells option:selected').val() || 3;
+
+    if (getPlayerData() === false) {
+
+        $('.play-btn').removeAttr('disabled');
+        $('.restart-btn').attr('disabled', 'true');
+
+        return;
+    };
+
+    cells = $('.cells option:selected').val() || 3;
+    $('.play-btn').attr('disabled', 'true');
+    $('.restart-btn').removeAttr('disabled');
 
 
     function changeWidthOfArea() {
         let areaSize = 355;
 
         if (cells > 3) {
-            for (let i = 3; i<cells; i++) {
+            for (let i = 3; i < cells; i++) {
                 areaSize += 110;
             }
         }
@@ -24,7 +43,7 @@ function pazzleGame(cells) {
         $('.play-area').css('width', areaSize + 'px');
     }
 
-    let elemCount = cells*cells,
+    let elemCount = cells * cells,
         arrOfItems = [],
         pazzleItemObj = {};
 
@@ -98,12 +117,12 @@ function pazzleGame(cells) {
     }
 
     function shuffle(array) {
-        var currentIndex = array.length-1, tmp, randomIndex;
+        var currentIndex = array.length - 1, tmp, randomIndex;
 
         console.log(currentIndex);
         while (0 !== currentIndex) {
 
-            randomIndex = Math.floor(Math.random() * currentIndex );
+            randomIndex = Math.floor(Math.random() * currentIndex);
             currentIndex -= 1;
 
             tmp = array[currentIndex];
@@ -127,7 +146,6 @@ function pazzleGame(cells) {
 
         // keyHandler();
 
-        counter = new timer('.time-cell');
         return pazzleItemObj;
     }
 
@@ -218,24 +236,24 @@ function pazzleGame(cells) {
         var arrOfItems = $('.grid-item'),
             checkNumbers = [],
             itemsNum = arrOfItems.text;
-            message = $('<div class="message-for-winner">You win!!!</div>');
+        message = $('<div class="message-for-winner">You win!!!</div>');
 
         for (var i = 0; i < arrOfItems.length; i++) {
 
-            checkNumbers[i] = '' + (i+1);
+            checkNumbers[i] = '' + (i + 1);
         }
 
-        if (checkNumbers == itemsNum){
+        if (checkNumbers == itemsNum) {
             (message).appendTo($('.play-area'));
         }
     }
 
-    getPlayerData();
     createGrid(cells);
     changeWidthOfArea();
     setTimeout(createPazzleItems, 500);
     setTimeout(getItemPosition, 500);
     setTimeout(keyHandler, 100);
+    counter = new timer('.time-cell');
 
 }
 
