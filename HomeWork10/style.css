@@ -78,8 +78,13 @@
 
 .message-for-winner {
     position: absolute;
-    background-color: rgba(6, 77, 93, 0.31);
+    background-color: rgba(6, 77, 93, 0.56);
     color: white;
+    width: 91%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
 }
 

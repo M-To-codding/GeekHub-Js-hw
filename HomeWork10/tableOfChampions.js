@@ -24,7 +24,8 @@ function getPlayerData() {
 
 function pasteDataInTable(playerName, areaSize, time) {
 
-    $('.player-info').append(`<tr><td>${playerName}</td><td>${areaSize}x${areaSize}</td>
-<td class="time-cell">${time}</td></tr>`);
+    $('.player-info').append(`<tr><td class="player">${playerName}</td><td class="area-size">${areaSize}x${areaSize}</td>
+<td class="time time-cell">${time}</td></tr>`);
 
 }
+

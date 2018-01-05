@@ -24,7 +24,8 @@ function pazzleGame(cells) {
         $('.restart-btn').attr('disabled', 'true');
 
         return;
-    };
+    }
+    ;
 
     cells = $('.cells option:selected').val() || 3;
     $('.play-btn').attr('disabled', 'true');
@@ -47,7 +48,6 @@ function pazzleGame(cells) {
         arrOfItems = [],
         pazzleItemObj = {};
 
-    console.log(cells);
 
     if (document.querySelector('.grid-item')) {
         return;
@@ -100,8 +100,6 @@ function pazzleGame(cells) {
             $('.pazzle-item').fadeOut();
         }
         $('.pazzle-item').fadeIn();
-
-
     }
 
     function generateSomeNumbers() {
@@ -119,7 +117,6 @@ function pazzleGame(cells) {
     function shuffle(array) {
         var currentIndex = array.length - 1, tmp, randomIndex;
 
-        console.log(currentIndex);
         while (0 !== currentIndex) {
 
             randomIndex = Math.floor(Math.random() * currentIndex);
@@ -144,7 +141,7 @@ function pazzleGame(cells) {
             }
         }
 
-        // keyHandler();
+        checkWin();
 
         return pazzleItemObj;
     }
@@ -170,7 +167,6 @@ function pazzleGame(cells) {
                         emptyCell.removeAttr('empty-cell');
                         getItemPosition();
                         emptyCell = $('[empty-cell=true]');
-                        console.log(getItemPosition());
                         return;
                     }
                 }
@@ -187,7 +183,6 @@ function pazzleGame(cells) {
                         emptyCell.removeAttr('empty-cell');
                         getItemPosition();
                         emptyCell = $('[empty-cell=true]');
-                        console.log(getItemPosition());
                         return;
                     }
                 }
@@ -204,11 +199,9 @@ function pazzleGame(cells) {
                         emptyCell.removeAttr('empty-cell');
                         getItemPosition();
                         emptyCell = $('[empty-cell=true]');
-                        console.log(getItemPosition());
                         return;
                     }
                 }
-                // console.log(emptyCell);
             }
             if (e.which == down) {
 
@@ -221,31 +214,45 @@ function pazzleGame(cells) {
                         emptyCell.removeAttr('empty-cell');
                         getItemPosition();
                         emptyCell = $('[empty-cell=true]');
-                        console.log(getItemPosition());
                         return;
                     }
                 }
-
             }
 
-            checkWin();
         })
     }
 
     function checkWin() {
-        var arrOfItems = $('.grid-item'),
+        let arrOfItems = $('.grid-item'),
             checkNumbers = [],
-            itemsNum = arrOfItems.text;
-        message = $('<div class="message-for-winner">You win!!!</div>');
+            itemsNum = [],
+            message = $('<div class="message-for-winner">You win!!!</div>'),
+            str;
 
         for (var i = 0; i < arrOfItems.length; i++) {
-
-            checkNumbers[i] = '' + (i + 1);
+            itemsNum[i] = arrOfItems[i].innerText;
         }
 
-        if (checkNumbers == itemsNum) {
+        for (var i = 0; i < arrOfItems.length - 1; i++) {
+            checkNumbers[i] = i + 1;
+        }
+
+        if (!str){
+            str = itemsNum.join('');
+            str = str.split('\n').join('');
+            str = str.split('\n').join('');
+        }
+
+        if (checkNumbers.join('') == str) {
+
             (message).appendTo($('.play-area'));
+            $('.time-cell').removeClass('time-cell');
+            counter.resetTimer();
+            $(window).off('keydown');
+            console.log('Win!!!');
         }
+
+        console.log('checkNumbers ' + checkNumbers.join('') + '\n' + 'itemsNum ' + str);
     }
 
     createGrid(cells);
@@ -260,6 +267,8 @@ function pazzleGame(cells) {
 function restartGame() {
     $('.time-cell').removeClass('time-cell');
     counter.resetTimer();
+    $('.message-for-winner').remove();
+
     $('.grid-item').remove();
     pazzleGame(3, 3);
 }
