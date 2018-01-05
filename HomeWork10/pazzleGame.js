@@ -6,6 +6,8 @@ $(function () {
 
 })
 
+
+let counter = {};
 function pazzleGame(cells) {
         cells = $('.cells option:selected').val() || 3;
 
@@ -124,6 +126,8 @@ function pazzleGame(cells) {
         }
 
         // keyHandler();
+
+        counter = new timer('.time-cell');
         return pazzleItemObj;
     }
 
@@ -136,6 +140,7 @@ function pazzleGame(cells) {
             emptyCell = $('[empty-cell=true]');
 
         $(window).keydown(function (e) {
+
             if (e.which == left) {
 
                 for (let i = 0; i < itemsArr.length; i++) {
@@ -235,6 +240,8 @@ function pazzleGame(cells) {
 }
 
 function restartGame() {
+    $('.time-cell').removeClass('time-cell');
+    counter.resetTimer();
     $('.grid-item').remove();
     pazzleGame(3, 3);
 }
