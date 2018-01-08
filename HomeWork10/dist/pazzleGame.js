@@ -14,7 +14,14 @@ $(function () {
     }
 });
 
-var counter = {};
+var counter = {},
+    allSavedUsers = JSON.parse(localStorage.getItem('users'));
+
+if (!allSavedUsers) {
+    allSavedUsers = [];
+} else {
+    getAllUsers();
+}
 
 function pazzleGame(cells) {
 
@@ -255,6 +262,7 @@ function pazzleGame(cells) {
 }
 
 function restartGame() {
+    saveToLocalStorage();
     $('.time-cell').removeClass('time-cell');
     counter.resetTimer();
     $('.message-for-winner').remove();

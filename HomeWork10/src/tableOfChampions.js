@@ -28,4 +28,3 @@ function pasteDataInTable(playerName, areaSize, time) {
 <td class="time time-cell">${time}</td></tr>`);
 
 }
-
