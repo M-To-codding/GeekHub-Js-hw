@@ -1,28 +1,61 @@
-.App {
-  text-align: center;
+.slider {
+  position: relative;
+  overflow: hidden;
+  margin: 20px auto 0 auto;
+  width: 284px;
+  height: 177px;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.slides-list {
+  display: block;
+  list-style: none;
+  position: relative;
+  margin: 0;
+  padding: 0;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.slide-item {
+  width: 284px;
+  height: 177px;
+  display: block;
+  float: left;
+  position: relative;
+  margin: 0;
+  padding: 0;
 }
 
-.App-title {
-  font-size: 1.5em;
+.slide-item img {
+  width: 120%;
 }
 
-.App-intro {
-  font-size: large;
+.slide-prev, .slide-next {
+  background-image: url("https://www.shareicon.net/download/2015/10/03/111568_left_512x512.png");
+background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: 40%; z-index: 10;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  display: block;
+  position: absolute;
+  margin: auto;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  background-color: rgba(255, 255, 255, 0.8);
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  border-radius: 100px;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.slide-next {
+  background-image: url("https://www.shareicon.net/download/2015/10/03/111568_left_512x512.png");
+  right:0;
+  margin-right:0;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
 }
