@@ -1,0 +1,18 @@
+{
+  "slider1": {
+    "items": [
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6PvxIQ7kGH5P-DG1JdUmA_rvzILIBlU4jtxqaFzrYNNjghe6s",
+      "http://t.wallpaperweb.org/wallpaper/3d_landscape/1280x960/TheOldFarm_1280x960.jpg",
+      "http://www.wallpapers13.com/wp-content/uploads/2016/05/Mountain-landscape-nature-Sea-sun-sky-clouds-Norway-HD-Wallpaper.jpg"
+    ],
+    "slideSpeed": "5000"
+  },
+  "slider2": {
+    "items": [
+      "http://www.outwardon.com/wp-content/uploads/2015/04/9941640553_bb27f24ac3_b.jpg",
+      "http://s.hswstatic.com/gif/extreme-motor-sports-orig.jpg",
+      "http://3.bp.blogspot.com/-4XA7gf_LiCs/Vl4JFEqajuI/AAAAAAABLU4/JBQS7DNG9MY/s640/%25CF%25871.jpg"
+    ],
+    "slideSpeed": "1000"
+  }
+}
