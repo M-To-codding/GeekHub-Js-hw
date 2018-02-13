@@ -5,21 +5,21 @@ import data from './data/options.json';
 
 
 class App extends Component {
-  constructor(props){
-    super(props);
 
-    this.slider = new Slider(data.slider1);
-    this.slider2 = new Slider(data.slider2);
+  constructor(props) {
+    super(props);
   }
+
 
   render() {
 
     return (
       <div className="content">
-        {this.slider.render()}
-        {this.slider2.render()}
+        <Slider items={data.slider1.items} slideSpeed={data.slider1.slideSpeed}/>
+        <Slider items={data.slider2.items} slideSpeed={data.slider2.slideSpeed}/>
       </div>
     );
+
   }
 }
 
